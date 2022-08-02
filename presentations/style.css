@@ -1,0 +1,28 @@
+.reveal .controls,
+.reveal .progress{
+	color: #00008b;
+}
+
+.reveal section .icon{
+	vertical-align: middle;
+}
+.reveal section .icon img{
+	margin: 0;
+	font-size: 1em;
+	width: 1.3em;
+	height: 1.3em;
+
+	background-color: transparent;
+	border: 0;
+	box-shadow: none;
+}
+
+.reveal section .finite-automata{
+	max-width: none;
+	max-height: none;
+}
+.reveal section .finite-automata img{
+	width: 100%;
+	border: 0;
+	box-shadow: none;
+}

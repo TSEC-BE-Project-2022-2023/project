@@ -1,0 +1,101 @@
+name: Publish to GitHub Pages
+on:
+    push:
+        branches:
+            - main
+    pull_request:
+        branches:
+            - main
+    workflow_dispatch:
+
+defaults:
+    run:
+        working-directory: "/documents"
+
+jobs:
+    build-website:
+        runs-on: ubuntu-latest
+        container: "docker://asciidoctor/docker-asciidoctor:latest"
+        steps:
+            - name: Checkout code
+              run: |
+                # Set repository URL
+                REPOSITORY_URL="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}.git"
+                BRANCH_NAME="${GITHUB_REF#refs/heads/}"
+
+                # Clone repository
+                git clone "${REPOSITORY_URL}" . --depth 2 -b "${BRANCH_NAME}"
+
+                # Don't switch to gh-pages if not on main
+                if [ "${BRANCH_NAME}" = "main" ]; then
+                    # Switch to gh-pages branch
+                    if ! git show-branch remotes/origin/gh-pages; then
+                      # If the branch doesn't exist, then create an orphan branch
+                      echo "Could not find gh-pages branch, creating as orphan"
+                      git switch --orphan gh-pages
+                    else
+                      # Else, fetch and switch to the branch
+                      git fetch origin gh-pages:gh-pages
+                      git switch gh-pages
+                    fi
+
+                    # Delete all old files
+                    rm -rf ./*;
+
+                    # Get latest source
+                    git restore -s "${BRANCH_NAME}" .;
+                fi
+
+            - name: Install mermaid cli
+              run: |
+                apk add chromium nodejs npm;
+
+                export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true;
+                echo "PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser" >> "${GITHUB_ENV}";
+                npm i -g @mermaid-js/mermaid-cli;
+
+            - name: Build site using Asciidoctor
+              run: |
+                BUILD_DIR="build";
+
+                # Build pages
+                ./build.sh "${BUILD_DIR}";
+
+                # Remove source files
+                for path in .* *; do
+                    if
+                        [ "$path" != "." ] &&
+                        [ "$path" != ".." ] &&
+                        [ "$path" != ".git" ] &&
+                        [ "$path" != "${BUILD_DIR}" ]
+                    then
+                        rm -rf "${path}";
+                    fi
+                done
+
+                # Move built files to root
+                cp -r "${BUILD_DIR}"/* .;
+                rm -r "${BUILD_DIR}";
+
+            - name: Deploy to GitHub Pages
+              run: |
+                # Skip deploy if not on main
+                BRANCH_NAME="${GITHUB_REF#refs/heads/}";
+                if [ "${BRANCH_NAME}" != "main" ]; then
+                  echo "Skipping deployment since branch is '${BRANCH_NAME}', not main";
+                  exit 0;
+                fi
+
+                # Add modified files
+                git add .;
+
+                # Set user
+                git config user.name "Auto deploy GitHub Pages";
+                git config user.email "cd-deploy-gh-pages@bot";
+
+                # Commit changes
+                git commit -m "Deploy to pages: $(date +'%Y-%m-%d %T')";
+
+                # Remove 'https://' from beginning of GITHUB_SERVER_URL
+                REPOSITORY_PATH="${GITHUB_SERVER_URL#https://}/${GITHUB_REPOSITORY}.git"
+                git push "https://X-Access-Token:${{ secrets.GITHUB_TOKEN }}@${REPOSITORY_PATH}" gh-pages

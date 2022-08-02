@@ -1,0 +1,19 @@
+= CircuitVerse: Finite Automata to Digital Circuit Synthesizer
+:toc: left
+:nofooter:
+
+== Project
+Source: https://github.com/CircuitVerse/CircuitVerse/wiki/GSoC%2721-Project-List#project-6---fsm-to-circuit-synthesizer[FSM to Circuit Synthesizer]
+
+[quote]
+Finite State Machines are fundamental concepts in Automata Theory and Digital Logic Design.
+These FSMs can be converted into a circuit.
+In academia, these are called Moore and Mealy machines.
+These project aims to introduce an FSM editor in the simulator, generate state transition logic and generate the circuit.
+We ideally would like to build upon an exiting open-source FSM editor.
+This is an open-ended project and can be extended to demonstrate other concepts like DFA, NFA, PDA and Turing Machines.
+
+
+== Presentations
+* link:pass:[./presentations/01 Topic Approval - GUI.html][Topic Approval: GUI]
+* link:pass:[./presentations/01 Topic Approval - Synthesizer.html][Topic Approval: Synthesizer]
