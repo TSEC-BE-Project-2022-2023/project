@@ -28,15 +28,14 @@ jobs:
 
                 # Don't switch to gh-pages if not on main
                 if [ "${BRANCH_NAME}" = "main" ]; then
-                    # Switch to gh-pages branch
-                    if ! git show-branch remotes/origin/gh-pages; then
-                      # If the branch doesn't exist, then create an orphan branch
-                      echo "Could not find gh-pages branch, creating as orphan"
-                      git switch --orphan gh-pages
+                    # Try to fetch the gh-pages branch
+                    if ! git fetch origin gh-pages:gh-pages; then
+                        # If the branch doesn't exist, then create an orphan branch
+                        echo "Could not find gh-pages branch, creating as orphan"
+                        git switch --orphan gh-pages
                     else
-                      # Else, fetch and switch to the branch
-                      git fetch origin gh-pages:gh-pages
-                      git switch gh-pages
+                        # Else, switch to the branch
+                        git switch gh-pages
                     fi
 
                     # Delete all old files
