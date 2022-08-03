@@ -18,10 +18,6 @@ if [ "$(id -u)" -eq 0 ] && [ -n "${CI}" ]; then
 fi
 
 # Build presentations
-cp -r \
-	"presentations/images" \
-	"presentations/style.css" \
-	"${output}/presentations";
 asciidoctor-revealjs -vw -r asciidoctor-diagram \
 	${PUPPETEER_CONFIG+-a "mermaid-puppeteer-config=${PUPPETEER_CONFIG}"} \
 	"presentations/01 Topic Approval - Synthesizer.adoc" \
@@ -30,6 +26,10 @@ asciidoctor-revealjs -vw -r asciidoctor-diagram \
 	${PUPPETEER_CONFIG+-a "mermaid-puppeteer-config=${PUPPETEER_CONFIG}"} \
 	"presentations/01 Topic Approval - GUI.adoc" \
 	-o "${output}/presentations/01 Topic Approval - GUI.html";
+cp -r \
+	"presentations/images" \
+	"presentations/style.css" \
+	"${output}/presentations";
 
 asciidoctor -vw "README.adoc" -o "${output}/index.html";
 
