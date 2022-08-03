@@ -19,11 +19,11 @@ fi
 
 # Build presentations
 asciidoctor-revealjs -vw -r asciidoctor-diagram \
-	${PUPPETEER_CONFIG+-a "mermaid-puppeteer-config=${PUPPETEER_CONFIG}"} \
+	${PUPPETEER_CONFIG:+-a "mermaid-puppeteer-config=${PUPPETEER_CONFIG}"} \
 	"presentations/01 Topic Approval - Synthesizer.adoc" \
 	-o "${output}/presentations/01 Topic Approval - Synthesizer.html";
 asciidoctor-revealjs -vw -r asciidoctor-diagram \
-	${PUPPETEER_CONFIG+-a "mermaid-puppeteer-config=${PUPPETEER_CONFIG}"} \
+	${PUPPETEER_CONFIG:+-a "mermaid-puppeteer-config=${PUPPETEER_CONFIG}"} \
 	"presentations/01 Topic Approval - GUI.adoc" \
 	-o "${output}/presentations/01 Topic Approval - GUI.html";
 cp -r \

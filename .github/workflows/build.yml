@@ -81,8 +81,8 @@ jobs:
                 # Skip deploy if not on main
                 BRANCH_NAME="${GITHUB_REF#refs/heads/}";
                 if [ "${BRANCH_NAME}" != "main" ]; then
-                  echo "Skipping deployment since branch is '${BRANCH_NAME}', not main";
-                  exit 0;
+                    echo "Skipping deployment since branch is '${BRANCH_NAME}', not main";
+                    exit 0;
                 fi
 
                 # Add modified files
