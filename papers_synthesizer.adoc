@@ -1,0 +1,9 @@
+== Research papers [Synthesizer]
+
+* link:pass:[../papers_synthesizer/quine1952.pdf][W. V. Quine: The Problem of Simplifying Truth Functions. 1952]
+* link:pass:[../papers_synthesizer/quine1955.pdf][W. V. Quine: A Way to Simplify Truth Functions. 1955]
+* link:pass:[../papers_synthesizer/mccluskey1956.pdf][E. J. McCLUSKEY, Jr.: Minimization of Boolean Functions. 1956]
+* link:pass:[../papers_synthesizer/dasilva2019.pdf][António Ferreira da Silva, Adriano A. Santos: A Simulation Tool Using AI Technics and Karnaugh Maps for Learning and Control Digital Pneumatics. 2019]
+* link:pass:[../papers_synthesizer/1906.01363.pdf][Shanka Subhra Mondal, Abhilash Nandy, Ritesh Agrawal, Debashis Sen: KarNet: An Efficient Boolean Function Simplifier. 2019]
+* link:pass:[../papers_synthesizer/kodwani2017.pdf][Urvashi Kodwani, Sonal Rajurkar, Prof. S. G. Mundada: Realization of Sequential Circuit using Finite state Machine. 2017]
+* link:pass:[../papers_synthesizer/chakraborty2011.pdf][Pinaki Chakraborty, P.C. Saxena, C.P. Katti: Fifty Years of Automata Simulation: A Review. 2011]

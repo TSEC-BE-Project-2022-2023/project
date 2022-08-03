@@ -86,7 +86,9 @@ image::./images/circuit.png[]
 
 == References
 
-. R. Jagielski. "Visual simulation of finite state machines" sci-hub.se
-. Converting State Diagrams to Logic Circuits faculty.etsu.edu/tarnoff/ntes2150/statemac/statemac.htm
-. FSM simulator ivanzuzak.info/noam/webapps/fsm_simulator/
-. Noam: library for working with automata github.com/izuzak/noam
+// . R. Jagielski. "Visual simulation of finite state machines" sci-hub.se
+// . Converting State Diagrams to Logic Circuits faculty.etsu.edu/tarnoff/ntes2150/statemac/statemac.htm
+// . FSM simulator ivanzuzak.info/noam/webapps/fsm_simulator/
+// . Noam: library for working with automata github.com/izuzak/noam
+
+include::../papers_synthesizer.adoc[]

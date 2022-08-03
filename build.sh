@@ -32,5 +32,7 @@ cp -r \
 	"${output}/presentations";
 
 asciidoctor -vw "README.adoc" -o "${output}/index.html";
+cp -r "papers_synthesizer" \
+    "${output}/papers_synthesizer";
 
 echo "Build complete";
