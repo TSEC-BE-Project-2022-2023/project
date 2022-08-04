@@ -29,6 +29,7 @@ asciidoctor-revealjs -vw -r asciidoctor-diagram \
 cp -r \
 	"presentations/images" \
 	"presentations/style.css" \
+    "papers_synthesizer" \
 	"${output}/presentations";
 
 asciidoctor -vw "README.adoc" -o "${output}/index.html";
