@@ -18,4 +18,4 @@ This is an open-ended project and can be extended to demonstrate other concepts 
 * link:pass:[./presentations/01 Topic Approval - GUI.html][Topic Approval: GUI]
 * link:pass:[./presentations/01 Topic Approval - Synthesizer.html][Topic Approval: Synthesizer]
 
-include::papers_synthesizer.adoc[]
+include::./papers_synthesizer.adoc[]
