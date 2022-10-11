@@ -133,7 +133,7 @@ stateDiagram-v2
 image::./images/circuit.png[]
 
 
-== Application
+== Application of our project
 [.text-justify]
 Finite Automata can be used to break down a circuit's function into a collection of states and rules which determine when the system moves from one state to another state.
 The state diagram consists of nodes which represent the states and arrows (sometimes called edges) which give the possible transitions between states.
