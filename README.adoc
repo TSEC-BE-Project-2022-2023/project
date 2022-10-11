@@ -13,9 +13,8 @@ These project aims to introduce an FSM editor in the simulator, generate state t
 We ideally would like to build upon an exiting open-source FSM editor.
 This is an open-ended project and can be extended to demonstrate other concepts like DFA, NFA, PDA and Turing Machines.
 
+include::./papers_synthesizer.adoc[]
 
 == Presentations
-* link:pass:[./presentations/01 Topic Approval - GUI.html][Topic Approval: GUI]
-* link:pass:[./presentations/01 Topic Approval - Synthesizer.html][Topic Approval: Synthesizer]
-
-include::./papers_synthesizer.adoc[]
+* link:./presentations/GUI[GUI]
+* link:./presentations/Synthesizer[Synthesizer]
