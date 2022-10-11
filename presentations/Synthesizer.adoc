@@ -20,21 +20,38 @@ Group Number: 24 +
 Guide: Prof. Sakshi Surve
 
 
-== Abstract
+== Introduction
 [text-justify]
 * Finite Automata are fundamental concepts in Automata Theory and Digital Logic Design.
 * These FA can be converted into a circuit.
 * Given an FA transition table as input, this project aims to generate the equivalent transition logic with primitive/basic gates/components.
 
 
-== Application
-[.text-justify]
-Finite Automata can be used to break down a circuit's function into a collection of states and rules which determine when the system moves from one state to another state.
-The state diagram consists of nodes which represent the states and arrows (sometimes called edges) which give the possible transitions between states.
+== Literature Review
+* CircuitVerse
+* JFLAP
+
+=== CircuitVerse
+image:images/circuitverse.png[]
+
+=== Limitations
+* Does not support simulation of Automata
+* Supports circuit simulation but not conversion from FA
+
+=== JFLAP
+image:images/jflap.png[]
+
+=== Limitations
+* Has to be run locally with Java
+* Users cannot share designed automata easily
 
 
-[transition=zoom]
-== Example
+== Methodology
+
+=== !
+[text-justify%step]
+* Determine what states / transitions are needed in order to solve the problem.
+* Draw the state diagram, labelling the states and the edges.
 
 === Finite Automata
 
@@ -63,6 +80,11 @@ stateDiagram-v2
 	d --> d : 1
 ----
 
+=== !
+[text-justify%step]
+* Develop a mapping between state and representation in FFs.
+* Write out the state transition table.
+
 === Transition Table
 
 [cols="3*^"]
@@ -75,8 +97,91 @@ stateDiagram-v2
 | `D`  | `A`                      | `D`
 |===
 
+=== !
+[text-justify%step]
+* Based on the Activation table of the flip-flops used, construct the truth table from the transition table.
+* Based on the truth table, construct the equation for each output variable.
+
+=== Truth Table
+
+[.condensed-table, cols="6*^.^"]
+|===
+2+| Present State
+.2+| Button Input
+2+| Next State
+.2+| Output
+
+| `b0` | `b1` | `b0` | `b1`
+
+| 0 | 0 | 0 | 0 | 0 | 0
+| 0 | 0 | 1 | 0 | 1 | 0
+| 0 | 1 | 0 | 1 | 0 | 1
+| 0 | 1 | 1 | 0 | 1 | 1
+| 1 | 0 | 0 | 1 | 0 | 1
+| 1 | 0 | 1 | 1 | 1 | 1
+| 1 | 1 | 0 | 0 | 0 | 0
+| 1 | 1 | 1 | 1 | 1 | 0
+|===
+
+
+=== !
+[text-justify%step]
+* Reduce the expressions using the suitable algorithm (K-Maps / Quine-McClusky algorithm)
+* Convert the expressions to a circuit diagram using logic gates.
+
 === Circuit
 image::./images/circuit.png[]
+
+
+== Application
+[.text-justify]
+Finite Automata can be used to break down a circuit's function into a collection of states and rules which determine when the system moves from one state to another state.
+The state diagram consists of nodes which represent the states and arrows (sometimes called edges) which give the possible transitions between states.
+
+
+== Work done so far
+[.stretch]
+```console
+Enter the minterm expression
+Separate the terms with a space( ) or plus(+)
+Use ' for inverse
+Eg: ab'c + ab'c'
+    ab ac'
+
+a + b + ac'
+
+Canonical Expression:
+a'bc' + a'bc + ab'c' + ab'c + abc' + abc
+
+KMap:
++----+------+------+------+------+
+|  \ | b'c' | b'c  | b c  | b c' |
++----+------+------+------+------+
+| a' |      |      |    1 |    1 |
+| a  |    1 |    1 |    1 |    1 |
++----+------+------+------+------+
+```
+
+=== !
+[.stretch]
+```console
+Truth Table:
++-----+---+
+| abc |   |
++-----+---+
+| 000 | 0 |
+| 001 | 0 |
+| 010 | 1 |
+| 011 | 1 |
+| 100 | 1 |
+| 101 | 1 |
+| 110 | 1 |
+| 111 | 1 |
++-----+---+
+
+Minimized expression:
+a + b
+```
 
 
 == Technologies
@@ -86,9 +191,10 @@ image::./images/circuit.png[]
 
 == References
 
-// . R. Jagielski. "Visual simulation of finite state machines" sci-hub.se
-// . Converting State Diagrams to Logic Circuits faculty.etsu.edu/tarnoff/ntes2150/statemac/statemac.htm
-// . FSM simulator ivanzuzak.info/noam/webapps/fsm_simulator/
-// . Noam: library for working with automata github.com/izuzak/noam
+. R. Jagielski. "Visual simulation of finite state machines" sci-hub.se
+. Converting State Diagrams to Logic Circuits faculty.etsu.edu/tarnoff/ntes2150/statemac/statemac.htm
+. FSM simulator ivanzuzak.info/noam/webapps/fsm_simulator/
+. Noam: library for working with automata github.com/izuzak/noam
 
-include::../papers_synthesizer.adoc[]
+
+== Thank You
