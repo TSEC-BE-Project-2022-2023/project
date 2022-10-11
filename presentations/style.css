@@ -26,3 +26,8 @@
 	border: 0;
 	box-shadow: none;
 }
+
+.condensed-table .tableblock{
+	margin: 0;
+	line-height: 1;
+}
