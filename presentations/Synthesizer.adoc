@@ -204,10 +204,10 @@ a + b
 
 == References
 
-. R. Jagielski. "Visual simulation of finite state machines" sci-hub.se
-. Converting State Diagrams to Logic Circuits faculty.etsu.edu/tarnoff/ntes2150/statemac/statemac.htm
-. FSM simulator ivanzuzak.info/noam/webapps/fsm_simulator/
-. Noam: library for working with automata github.com/izuzak/noam
+. JFlap www.jflap.org
+. CircuitVerse circuitverse.org
+. link:papers_synthesizer/mccluskey1956.pdf[McCluskey(1956). Minimization of Boolean Functions. 1956]
+. link:papers_synthesizer/kodwani2017.pdf[Kodwani, Rajurkar, Mundada(2017). Realization of Sequential Circuit using Finite state Machine]
 
 
 == Thank You
