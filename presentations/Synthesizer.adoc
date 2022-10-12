@@ -183,6 +183,19 @@ Minimized expression:
 a + b
 ```
 
+== Future Work
+* Determine what states / transitions are needed in order to solve the problem.
+* Draw the state diagram, labelling the states and the edges.
+* Develop a mapping between state and representation in FFs.
+* [.done]#Write out the state transition table.#
+
+=== !
+
+* [.done]#Based on the Activation table of the flip-flops used, construct the truth table from the transition table.#
+* [.done]#Based on the truth table, construct the equation for each output variable.#
+* [.done]#Reduce the expressions using the suitable algorithm (K-Maps / Quine-McClusky algorithm)#
+* Convert the expressions to a circuit diagram using logic gates.
+
 
 == Technologies
 * icon:javascript[] JavaScript
