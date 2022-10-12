@@ -31,3 +31,8 @@
 	margin: 0;
 	line-height: 1;
 }
+
+.done{
+	background-color: #98ff98;
+	text-decoration: line-through;
+}
