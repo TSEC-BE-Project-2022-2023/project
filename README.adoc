@@ -16,5 +16,5 @@ This is an open-ended project and can be extended to demonstrate other concepts 
 include::./papers_synthesizer.adoc[]
 
 == Presentations
-* link:./presentations/GUI[GUI]
-* link:./presentations/Synthesizer[Synthesizer]
+* link:./presentations/GUI.adoc[GUI]
+* link:./presentations/Synthesizer.adoc[Synthesizer]
