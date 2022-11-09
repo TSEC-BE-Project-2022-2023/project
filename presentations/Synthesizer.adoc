@@ -209,5 +209,6 @@ a + b
 . link:papers_synthesizer/mccluskey1956.pdf[McCluskey(1956). Minimization of Boolean Functions. 1956]
 . link:papers_synthesizer/kodwani2017.pdf[Kodwani, Rajurkar, Mundada(2017). Realization of Sequential Circuit using Finite state Machine]
 
-
-== Thank You
+[.stretch.fullscreen-video]
+== !
+video::images/ending.mp4[width=100%, height=100%, opts=autoplay]
