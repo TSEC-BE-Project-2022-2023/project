@@ -140,52 +140,82 @@ The state diagram consists of nodes which represent the states and arrows (somet
 
 
 == Work done so far
-[.stretch]
+
+=== !
+1) Verification Of Finite Automata
 ```console
-Enter the minterm expression
-Separate the terms with a space( ) or plus(+)
-Use ' for inverse
-Eg: ab'c + ab'c'
-    ab ac'
+npx ts-node test.js
+>> DFA error: state A defines more transition for input 1: B, A
 
-a + b + ac'
+>> DFA error: state B does not define a transition for input 1
 
-Canonical Expression:
-a'bc' + a'bc + ab'c' + ab'c + abc' + abc
-
-KMap:
-+----+------+------+------+------+
-|  \ | b'c' | b'c  | b c  | b c' |
-+----+------+------+------+------+
-| a' |      |      |    1 |    1 |
-| a  |    1 |    1 |    1 |    1 |
-+----+------+------+------+------+
+>> null (No error in FA)
 ```
 
 === !
+2) Generation of State Transition Table
 [.stretch]
 ```console
-Truth Table:
-+-----+---+
-| abc |   |
-+-----+---+
-| 000 | 0 |
-| 001 | 0 |
-| 010 | 1 |
-| 011 | 1 |
-| 100 | 1 |
-| 101 | 1 |
-| 110 | 1 |
-| 111 | 1 |
-+-----+---+
+npx ts-node test.js
+>>	-------------------------------------
+	|  State/Input  |    0    |    1    |
+	-------------------------------------
+	|      A/0      |    A    |    B    |
+	-------------------------------------
+	|      B/1      |    C    |    B    |
+	-------------------------------------
+	|      C/1      |    C    |    D    |
+	-------------------------------------
+	|      D/0      |    A    |    D    |
+	-------------------------------------
+```
+=== !
 
-Minimized expression:
-a + b
+3) Generation of Truth Table
+[.stretch]
+```console
+npx ts-node test.js
+>>	-------------------------------------------
+	|b1      b0      input0  b1      b0      O|
+	-------------------------------------------
+	|0       0       0       0       0       0|
+	-------------------------------------------
+	|0       0       1       0       1       0|
+	-------------------------------------------
+	|0       1       0       1       0       1|
+	-------------------------------------------
+	|0       1       1       0       1       1|
+	-------------------------------------------
+	|1       0       0       1       0       1|
+	-------------------------------------------
+	|1       0       1       1       1       1|
+	-------------------------------------------
+	|1       1       0       0       0       0|
+	-------------------------------------------
+	|1       1       1       1       1       0|
+	-------------------------------------------
+```
+=== !
+4) Generation of minterm expressions
+```console
+npx ts-node test.js
+>>	B0 = b0'b1'o + b0b1'o + b0'b1o' + b0b1o'
+>>	B1 = b0b1'o' + b0b1'o + b0b1o' + b0b1o
+>>	O = b0'b1'o + b0'b1o' + b0b1o' + b0b1o
+```
+
+=== !
+5) Reduction of minterm expressions using Quine-McCluskey reduction technique
+```console
+npx ts-node quineMcClusky.js A'B(A' + B)(B' + B)
+>>	B1 = b1'b0o' + b1b0' + b1o
+>>	B0 = o
+>>	O = b1'b0 + b1b0'
 ```
 
 == Future Work
-* Determine what states / transitions are needed in order to solve the problem.
-* Draw the state diagram, labelling the states and the edges.
+* [.done]#Determine what states / transitions are needed in order to solve the problem.#
+* [.done]#Draw the state diagram, labelling the states and the edges.#
 * Develop a mapping between state and representation in FFs.
 * [.done]#Write out the state transition table.#
 
