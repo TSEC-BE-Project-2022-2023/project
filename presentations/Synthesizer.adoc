@@ -176,7 +176,7 @@ npx ts-node test.js
 ```console
 npx ts-node test.js
 >>	-------------------------------------------
-	|b1      b0      input0  b1      b0      O|
+	|b1      b0      i       b1      b0      O|
 	-------------------------------------------
 	|0       0       0       0       0       0|
 	-------------------------------------------
@@ -199,18 +199,18 @@ npx ts-node test.js
 4) Generation of minterm expressions
 ```console
 npx ts-node test.js
->>	B0 = b0'b1'o + b0b1'o + b0'b1o' + b0b1o'
->>	B1 = b0b1'o' + b0b1'o + b0b1o' + b0b1o
->>	O = b0'b1'o + b0'b1o' + b0b1o' + b0b1o
+>>	b1 = b1'.b0.i' + b1.b0'.i' + b1.b0'.i + b1.b0.i
+>>	b0 = b1'.b0'.i + b1'.b0.i + b1.b0'.i + b1.b0.i
+>>	i = b1'.b0.i' + b1'.b0.i + b1.b0'.i' + b1.b0'.i
 ```
 
 === !
 5) Reduction of minterm expressions using Quine-McCluskey reduction technique
 ```console
-npx ts-node quineMcClusky.js A'B(A' + B)(B' + B)
->>	B1 = b1'b0o' + b1b0' + b1o
->>	B0 = o
->>	O = b1'b0 + b1b0'
+npx ts-node quineMcClusky.js
+>>	b1 = b1'.b0.i' + b1.b0' + b1.i
+>>	b0 = o
+>>	i = b1'.b0 + b1.b0'
 ```
 
 == Future Work
