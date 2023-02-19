@@ -421,7 +421,7 @@ The state diagram consists of nodes which represent the states and arrows (somet
 	-------------------------------------</code></pre></div></div></div></section><section><div class="slide-content"><div class="paragraph"><p>3) Generation of Truth Table</p></div>
 <div class="listingblock stretch"><div class="content"><pre class="highlight"><code class="language-console" data-lang="console">npx ts-node test.js
 &gt;&gt;	-------------------------------------------
-	|b1      b0      input0  b1      b0      O|
+	|b1      b0      i       b1      b0      O|
 	-------------------------------------------
 	|0       0       0       0       0       0|
 	-------------------------------------------
@@ -440,13 +440,13 @@ The state diagram consists of nodes which represent the states and arrows (somet
 	|1       1       1       1       1       0|
 	-------------------------------------------</code></pre></div></div></div></section><section><div class="slide-content"><div class="paragraph"><p>4) Generation of minterm expressions</p></div>
 <div class="listingblock"><div class="content"><pre class="highlight"><code class="language-console" data-lang="console">npx ts-node test.js
-&gt;&gt;	B0 = b0'b1'o + b0b1'o + b0'b1o' + b0b1o'
-&gt;&gt;	B1 = b0b1'o' + b0b1'o + b0b1o' + b0b1o
-&gt;&gt;	O = b0'b1'o + b0'b1o' + b0b1o' + b0b1o</code></pre></div></div></div></section><section><div class="slide-content"><div class="paragraph"><p>5) Reduction of minterm expressions using Quine-McCluskey reduction technique</p></div>
-<div class="listingblock"><div class="content"><pre class="highlight"><code class="language-console" data-lang="console">npx ts-node quineMcClusky.js A'B(A' + B)(B' + B)
-&gt;&gt;	B1 = b1'b0o' + b1b0' + b1o
-&gt;&gt;	B0 = o
-&gt;&gt;	O = b1'b0 + b1b0'</code></pre></div></div></div></section></section>
+&gt;&gt;	b1 = b1'.b0.i' + b1.b0'.i' + b1.b0'.i + b1.b0.i
+&gt;&gt;	b0 = b1'.b0'.i + b1'.b0.i + b1.b0'.i + b1.b0.i
+&gt;&gt;	i = b1'.b0.i' + b1'.b0.i + b1.b0'.i' + b1.b0'.i</code></pre></div></div></div></section><section><div class="slide-content"><div class="paragraph"><p>5) Reduction of minterm expressions using Quine-McCluskey reduction technique</p></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><code class="language-console" data-lang="console">npx ts-node quineMcClusky.js
+&gt;&gt;	b1 = b1'.b0.i' + b1.b0' + b1.i
+&gt;&gt;	b0 = o
+&gt;&gt;	i = b1'.b0 + b1.b0'</code></pre></div></div></div></section></section>
 <section><section id="_future_work"><h2>Future Work</h2><div class="slide-content"><div class="ulist"><ul><li><p><span class="done">Determine what states / transitions are needed in order to solve the problem.</span></p></li><li><p><span class="done">Draw the state diagram, labelling the states and the edges.</span></p></li><li><p>Develop a mapping between state and representation in FFs.</p></li><li><p><span class="done">Write out the state transition table.</span></p></li></ul></div></div></section><section><div class="slide-content"><div class="ulist"><ul><li><p><span class="done">Based on the Activation table of the flip-flops used, construct the truth table from the transition table.</span></p></li><li><p><span class="done">Based on the truth table, construct the equation for each output variable.</span></p></li><li><p><span class="done">Reduce the expressions using the suitable algorithm (K-Maps / Quine-McClusky algorithm)</span></p></li><li><p>Convert the expressions to a circuit diagram using logic gates.</p></li></ul></div></div></section></section>
 <section id="_technologies"><h2>Technologies</h2><div class="slide-content"><div class="ulist"><ul><li><p><span class="icon"><img src="./images/icons/javascript.svg" alt="javascript"></span> JavaScript</p></li><li><p><span class="icon"><img src="./images/icons/typescript.svg" alt="typescript"></span> TypeScript</p></li></ul></div></div></section>
 <section id="_references"><h2>References</h2><div class="slide-content"><div class="olist arabic"><ol class="arabic"><li><p>JFlap www.jflap.org</p></li><li><p>CircuitVerse circuitverse.org</p></li><li><p><a href="papers_synthesizer/mccluskey1956.pdf">McCluskey(1956). Minimization of Boolean Functions. 1956</a></p></li><li><p><a href="papers_synthesizer/kodwani2017.pdf">Kodwani, Rajurkar, Mundada(2017). Realization of Sequential Circuit using Finite state Machine</a></p></li></ol></div></div></section>
