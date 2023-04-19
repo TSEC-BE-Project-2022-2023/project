@@ -142,7 +142,52 @@ The state diagram consists of nodes which represent the states and arrows (somet
 == Work done so far
 
 === !
-1) Verification Of Finite Automata
+1) Implement KMaps for expression reduction
+[.stretch]
+```console
+Enter the minterm expression
+Separate the terms with a space( ) or plus(+)
+Use ' for inverse
+Eg: ab'c + ab'c'
+    ab ac'
+
+a + b + ac'
+
+Canonical Expression:
+a'bc' + a'bc + ab'c' + ab'c + abc' + abc
+
+KMap:
++----+------+------+------+------+
+|  \ | b'c' | b'c  | b c  | b c' |
++----+------+------+------+------+
+| a' |      |      |    1 |    1 |
+| a  |    1 |    1 |    1 |    1 |
++----+------+------+------+------+
+```
+
+=== !
+[.stretch]
+```console
+Truth Table:
++-----+---+
+| abc |   |
++-----+---+
+| 000 | 0 |
+| 001 | 0 |
+| 010 | 1 |
+| 011 | 1 |
+| 100 | 1 |
+| 101 | 1 |
+| 110 | 1 |
+| 111 | 1 |
++-----+---+
+
+Minimized expression:
+a + b
+```
+
+=== !
+2) Verification Of Finite Automata
 ```console
 npx ts-node test.js
 >> DFA error: state A defines more transition for input 1: B, A
@@ -153,7 +198,7 @@ npx ts-node test.js
 ```
 
 === !
-2) Generation of State Transition Table
+3) Generation of State Transition Table
 [.stretch]
 ```console
 npx ts-node test.js
@@ -171,7 +216,7 @@ npx ts-node test.js
 ```
 === !
 
-3) Generation of Truth Table
+4) Generation of Truth Table
 [.stretch]
 ```console
 npx ts-node test.js
@@ -196,7 +241,7 @@ npx ts-node test.js
 	-------------------------------------------
 ```
 === !
-4) Generation of minterm expressions
+5) Generation of minterm expressions
 ```console
 npx ts-node test.js
 >>	b1 = b1'.b0.i' + b1.b0'.i' + b1.b0'.i + b1.b0.i
@@ -205,13 +250,43 @@ npx ts-node test.js
 ```
 
 === !
-5) Reduction of minterm expressions using Quine-McCluskey reduction technique
+[.text-justify]
+We first used KMaps to reduce our expression, which uses a k-map table to create the minimized expression, it’s a tabular method to get the expression and hard to implement it in code.
+
+=== !
+[.text-justify]
+==== The KMap algorithm has some severe disadvantages:
+* KMap is a NP Hard problem i.e. the time complexity to get the min expression increases exponentially with increase in number of inputs.
+* There is no guarantee that the expression obtained after the process will be the minimum one.
+
+=== !
+==== So we shifted to the Quine-McCluskey Algorithm.
+
+=== !
+6) Reduction of minterm expressions using Quine-McCluskey reduction technique
 ```console
 npx ts-node quineMcClusky.js
 >>	b1 = b1'.b0.i' + b1.b0' + b1.i
 >>	b0 = o
 >>	i = b1'.b0 + b1.b0'
 ```
+
+=== Results
+
+== The Finite Automata
+image:images/bulbfa.jpg[]
+
+== The Circuit
+image:images/bulbcircuit.jpg[]
+
+== The Finite Automata
+image:images/24.jpg[]
+
+== The Circuit
+image:images/25.jpg[]
+
+== The Circuit
+image:images/26.jpg[]
 
 == Steps completed
 * [.done]#Determine what states / transitions are needed in order to solve the problem.#
