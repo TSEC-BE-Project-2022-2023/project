@@ -140,6 +140,9 @@ The state diagram consists of nodes which represent the states and arrows (somet
 
 
 == Work done so far
+
+=== !
+1) Implement KMaps for expression reduction
 [.stretch]
 ```console
 Enter the minterm expression
@@ -183,6 +186,126 @@ Minimized expression:
 a + b
 ```
 
+=== !
+2) Verification Of Finite Automata
+```console
+npx ts-node test.js
+>> DFA error: state A defines more transition for input 1: B, A
+
+>> DFA error: state B does not define a transition for input 1
+
+>> null (No error in FA)
+```
+
+=== !
+3) Generation of State Transition Table
+[.stretch]
+```console
+npx ts-node test.js
+>>	-------------------------------------
+	|  State/Input  |    0    |    1    |
+	-------------------------------------
+	|      A/0      |    A    |    B    |
+	-------------------------------------
+	|      B/1      |    C    |    B    |
+	-------------------------------------
+	|      C/1      |    C    |    D    |
+	-------------------------------------
+	|      D/0      |    A    |    D    |
+	-------------------------------------
+```
+=== !
+
+4) Generation of Truth Table
+[.stretch]
+```console
+npx ts-node test.js
+>>	-------------------------------------------
+	|b1      b0      i       b1      b0      O|
+	-------------------------------------------
+	|0       0       0       0       0       0|
+	-------------------------------------------
+	|0       0       1       0       1       0|
+	-------------------------------------------
+	|0       1       0       1       0       1|
+	-------------------------------------------
+	|0       1       1       0       1       1|
+	-------------------------------------------
+	|1       0       0       1       0       1|
+	-------------------------------------------
+	|1       0       1       1       1       1|
+	-------------------------------------------
+	|1       1       0       0       0       0|
+	-------------------------------------------
+	|1       1       1       1       1       0|
+	-------------------------------------------
+```
+=== !
+5) Generation of minterm expressions
+```console
+npx ts-node test.js
+>>	b1 = b1'.b0.i' + b1.b0'.i' + b1.b0'.i + b1.b0.i
+>>	b0 = b1'.b0'.i + b1'.b0.i + b1.b0'.i + b1.b0.i
+>>	i = b1'.b0.i' + b1'.b0.i + b1.b0'.i' + b1.b0'.i
+```
+
+=== !
+[.text-justify]
+We first used KMaps to reduce our expression, which uses a k-map table to create the minimized expression, it’s a tabular method to get the expression and hard to implement it in code.
+
+=== !
+[.text-justify]
+==== The KMap algorithm has some severe disadvantages:
+* KMap is a NP Hard problem i.e. the time complexity to get the min expression increases exponentially with increase in number of inputs.
+* There is no guarantee that the expression obtained after the process will be the minimum one.
+
+=== !
+==== So we shifted to the Quine-McCluskey Algorithm.
+
+=== !
+6) Reduction of minterm expressions using Quine-McCluskey reduction technique
+```console
+npx ts-node quineMcClusky.js
+>>	b1 = b1'.b0.i' + b1.b0' + b1.i
+>>	b0 = o
+>>	i = b1'.b0 + b1.b0'
+```
+
+=== Results
+
+== The Finite Automata
+image:images/bulbfa.jpg[]
+
+== The Circuit
+image:images/bulbcircuit.jpg[]
+
+== The Finite Automata
+image:images/24.jpg[]
+
+== The Circuit
+image:images/25.jpg[]
+
+== The Circuit
+image:images/26.jpg[]
+
+== Steps completed
+* [.done]#Determine what states / transitions are needed in order to solve the problem.#
+* [.done]#Draw the state diagram, labelling the states and the edges.#
+* [.done]#Develop a mapping between state and representation in FFs.#
+* [.done]#Write out the state transition table.#
+
+=== !
+
+* [.done]#Based on the Activation table of the flip-flops used, construct the truth table from the transition table.#
+* [.done]#Based on the truth table, construct the equation for each output variable.#
+* [.done]#Reduce the expressions using the suitable algorithm (K-Maps / Quine-McClusky algorithm)#
+* [.done]#Convert the expressions to a circuit diagram using logic gates.#
+
+=== Future Scope
+* Add support for NFA
+* Add support for other types of Automata like Pushdown Automata and Turing Machine.
+* Extend the algorithm to choose from the variety of flip flops
+
 
 == Technologies
 * icon:javascript[] JavaScript
@@ -191,10 +314,10 @@ a + b
 
 == References
 
-. R. Jagielski. "Visual simulation of finite state machines" sci-hub.se
-. Converting State Diagrams to Logic Circuits faculty.etsu.edu/tarnoff/ntes2150/statemac/statemac.htm
-. FSM simulator ivanzuzak.info/noam/webapps/fsm_simulator/
-. Noam: library for working with automata github.com/izuzak/noam
+. JFlap www.jflap.org
+. CircuitVerse circuitverse.org
+. link:papers_synthesizer/mccluskey1956.pdf[McCluskey(1956). Minimization of Boolean Functions. 1956]
+. link:papers_synthesizer/kodwani2017.pdf[Kodwani, Rajurkar, Mundada(2017). Realization of Sequential Circuit using Finite state Machine]
 
-
-== Thank You
+[.stretch, background-video=images/ending.mp4, background-size=contain]
+== !
