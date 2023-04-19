@@ -213,10 +213,10 @@ npx ts-node quineMcClusky.js
 >>	i = b1'.b0 + b1.b0'
 ```
 
-== Future Work
+== Steps completed
 * [.done]#Determine what states / transitions are needed in order to solve the problem.#
 * [.done]#Draw the state diagram, labelling the states and the edges.#
-* Develop a mapping between state and representation in FFs.
+* [.done]#Develop a mapping between state and representation in FFs.#
 * [.done]#Write out the state transition table.#
 
 === !
@@ -224,7 +224,12 @@ npx ts-node quineMcClusky.js
 * [.done]#Based on the Activation table of the flip-flops used, construct the truth table from the transition table.#
 * [.done]#Based on the truth table, construct the equation for each output variable.#
 * [.done]#Reduce the expressions using the suitable algorithm (K-Maps / Quine-McClusky algorithm)#
-* Convert the expressions to a circuit diagram using logic gates.
+* [.done]#Convert the expressions to a circuit diagram using logic gates.#
+
+=== Future Scope
+* Add support for NFA
+* Add support for other types of Automata like Pushdown Automata and Turing Machine.
+* Extend the algorithm to choose from the variety of flip flops
 
 
 == Technologies
