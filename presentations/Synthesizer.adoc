@@ -49,39 +49,15 @@ image:images/jflap.png[]
 == Methodology
 
 === !
-[text-justify%step]
+[text-justify]
 * Determine what states / transitions are needed in order to solve the problem.
 * Draw the state diagram, labelling the states and the edges.
 
 === Finite Automata
-
-[mermaid.finite-automata, format=svg, background=0000000 /*, opts=inline*/]
-----
-stateDiagram-v2
-	direction LR
-
-	a: A. Bulb off
-	b: B. Bulb on
-	c: C. Bulb on
-	d: D. Bulb off
-
-	[*] --> a
-
-	a --> a : 0
-	a --> b : 1
-
-	b --> c : 0
-	b --> b : 1
-
-	c --> c : 0
-	c --> d : 1
-
-	d --> a : 0
-	d --> d : 1
-----
+image:images/mermaid-bulbfa.png[]
 
 === !
-[text-justify%step]
+[text-justify]
 * Develop a mapping between state and representation in FFs.
 * Write out the state transition table.
 
@@ -98,7 +74,7 @@ stateDiagram-v2
 |===
 
 === !
-[text-justify%step]
+[text-justify]
 * Based on the Activation table of the flip-flops used, construct the truth table from the transition table.
 * Based on the truth table, construct the equation for each output variable.
 
@@ -125,7 +101,7 @@ stateDiagram-v2
 
 
 === !
-[text-justify%step]
+[text-justify]
 * Reduce the expressions using the suitable algorithm (K-Maps / Quine-McClusky algorithm)
 * Convert the expressions to a circuit diagram using logic gates.
 
@@ -287,6 +263,16 @@ image:images/25.jpg[]
 
 == The Circuit
 image:images/26.jpg[]
+
+== The Finite Automata
+image:images/example3.jpg[]
+
+== The Circuit
+image:images/examplec3cir1.jpeg[]
+
+== The Circuit 
+image:images/example3cir2.jpg[]
+
 
 == Steps completed
 * [.done]#Determine what states / transitions are needed in order to solve the problem.#
